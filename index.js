@@ -10,7 +10,7 @@ const args = process.argv.slice(2);
 let length = 8; // Default password length is 8
 let customizeArg = ""; // By default, the password only has lowercase letters
 
-// Function to show the help menu when the user asks for it
+// Function to show the help menu when the user asks for
 function printHelp() {
   console.log(`
 Usage:
