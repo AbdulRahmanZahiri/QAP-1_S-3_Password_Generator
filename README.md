@@ -25,29 +25,6 @@ Run this command to install the required Node.js dependencies:
 npm install
 ```
 
-#### After installing the dependencies, you can generate passwords with the following commands:
+#### To display a help message with usage instructions, run:
 
-1: Generate a default password:
-
-```bash
-npx pass-gen
-```
-
-2: Specify the length of the password:
-
-```bash
-npx pass-gen --length ("Amount of Numbers")
-```
-
-3: Customize the password:
-
-Use the --customize flag to include specific character types:
-
-c for uppercase letters.
-n for numbers.
-s for symbols.
-a for all options (uppercase, numbers, symbols).
-
-```bash
-npx pass-gen --length 12 --customize acns
-```
+`npx pass-gen --help`
