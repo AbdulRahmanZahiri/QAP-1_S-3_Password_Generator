@@ -10,7 +10,7 @@ const args = process.argv.slice(2);
 let length = 8; // Default password length is 8
 let customizeArg = ""; // By default, the password only has lowercase letters
 
-// Function to show the help menu when the user asks for
+// Function to show the help menu when the user asks for it
 function printHelp() {
   console.log(`
 Usage:
@@ -24,6 +24,7 @@ Options:
                         c - include uppercase letters
                         n - include numbers
                         s - include symbols
+                        l - include lowercase letters (default if none specified)
 
 Examples:
   npx pass-gen --length 12 --customize acn
@@ -80,23 +81,36 @@ for (let i = 0; i < args.length; i++) {
   }
 }
 
-// These are the possible characters for the password
+// Define character sets
 const lowercase = "abcdefghijklmnopqrstuvwxyz";
 const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const numbers = "1234567890";
 const symbols = "!@#$%^&*()<>?[]=-+_/,?:'|";
 
-// Start with lowercase letters as the default character set
-let characterSet = lowercase;
+// Build the character set based on user input
+let characterSet = ""; // Start with an empty character set
 if (customizeArg.includes("a")) {
-  // If the user wants "all characters," use everything
+  // If the user wants "all characters," include everything
   characterSet = lowercase + uppercase + numbers + symbols;
 } else {
-  // Otherwise, add specific types based on what the user chose
+  // Otherwise, add specific types based on the user's flags
+  if (customizeArg.includes("l") || customizeArg === "")
+    characterSet += lowercase; // Add lowercase letters (default)
   if (customizeArg.includes("c")) characterSet += uppercase; // Add uppercase letters
   if (customizeArg.includes("n")) characterSet += numbers; // Add numbers
   if (customizeArg.includes("s")) characterSet += symbols; // Add symbols
 }
 
-// Create and show the password
+// Error handling: Ensure a valid character set is built
+if (characterSet === "") {
+  console.error(
+    "Error: No valid character types specified. Use --customize with a, c, n, s, or l."
+  );
+  process.exit(1);
+}
+
+// Debugging: Display the character set being used (optional, for testing purposes)
+console.log("Character set being used:", characterSet);
+
+// Generate and display the password
 console.log("Password:", generatePassword(length, characterSet));
