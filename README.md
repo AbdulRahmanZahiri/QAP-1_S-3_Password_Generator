@@ -2,7 +2,7 @@
 
 ## What is this?
 
-This is a simple tool you can use in your terminal to create secure passwords. It's written in Node.js and gives you options to customize your passwords.
+This is a simple tool you can use in your terminal to create secure passwords. It's written in Node.js and gives you options to customize your passwords.So I can name it strong password generator.
 
 ## What can it do?
 
