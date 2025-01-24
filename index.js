@@ -16,6 +16,8 @@ function printHelp() {
 Usage:
   npx pass-gen [options]
 
+
+
 Options:
   --help                Show this help message
   --length <number>     Set how long the password should be (default: 8)
